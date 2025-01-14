@@ -4,9 +4,9 @@
     {
         public int Id { get; set; }
         public required string identification { get; set; }
-        public required  string name { get; set; }
-        public required string phone { get; set; }
-        public required string email { get; set; }
-        public required string password { get; set; }
+        public   string name { get; set; }
+        public  string phone { get; set; }
+        public  string email { get; set; }
+        public  string password { get; set; }
     }
 }

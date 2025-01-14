@@ -3,6 +3,7 @@ using Parking.Data;
 using Parking.Data.Repositories;
 using Parking.Data.Repositories.ClientRepository;
 using Parking.Models;
+using Parking.Servicess.AuthService;
 using Parking.Servicess.ClienteService;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<IRepository<Cliente>, RepositoryImpl<Cliente>>();
 builder.Services.AddScoped<IClientService , ClientService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ClienteRepository>();
 
 builder.Services.AddCors(options =>
@@ -34,7 +36,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
