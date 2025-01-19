@@ -8,6 +8,7 @@ namespace Parking.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Space> Spaces { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

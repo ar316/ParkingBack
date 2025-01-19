@@ -2,9 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Parking.Data;
 using Parking.Data.Repositories;
 using Parking.Data.Repositories.ClientRepository;
+using Parking.Data.Repositories.SpaceRepository;
 using Parking.Models;
 using Parking.Servicess.AuthService;
 using Parking.Servicess.ClienteService;
+using Parking.Servicess.Space;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,10 +21,16 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//repositories
 builder.Services.AddScoped<IRepository<Cliente>, RepositoryImpl<Cliente>>();
-builder.Services.AddScoped<IClientService , ClientService>();
-builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<ClienteRepository>();
+builder.Services.AddScoped<SpaceRepository>();
+
+//services
+builder.Services.AddScoped<ISpaceService, SpaceService>();
+builder.Services.AddScoped<IClientService, ClientService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+
 
 builder.Services.AddCors(options =>
 {
